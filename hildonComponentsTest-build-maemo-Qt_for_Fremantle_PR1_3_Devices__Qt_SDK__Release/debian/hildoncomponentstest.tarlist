@@ -3,6 +3,10 @@
 755 root root . opt/hildonComponentsTest/qml /
 755 root root . opt/hildonComponentsTest/qml/hildonComponentsTest /
 644 root root . opt/hildonComponentsTest/qml/hildonComponentsTest/main.qml debian/hildoncomponentstest/opt/hildonComponentsTest/qml/hildonComponentsTest/main.qml
+644 root root . opt/hildonComponentsTest/qml/hildonComponentsTest/forward.svg debian/hildoncomponentstest/opt/hildonComponentsTest/qml/hildonComponentsTest/forward.svg
+644 root root . opt/hildonComponentsTest/qml/hildonComponentsTest/cursorMode.svg debian/hildoncomponentstest/opt/hildonComponentsTest/qml/hildonComponentsTest/cursorMode.svg
+644 root root . opt/hildonComponentsTest/qml/hildonComponentsTest/CustomTitleBar.qml debian/hildoncomponentstest/opt/hildonComponentsTest/qml/hildonComponentsTest/CustomTitleBar.qml
+644 root root . opt/hildonComponentsTest/qml/hildonComponentsTest/back.svg debian/hildoncomponentstest/opt/hildonComponentsTest/qml/hildonComponentsTest/back.svg
 644 root root . opt/hildonComponentsTest/qml/hildonComponentsTest/FlickableWebView.qml debian/hildoncomponentstest/opt/hildonComponentsTest/qml/hildonComponentsTest/FlickableWebView.qml
 644 root root . opt/hildonComponentsTest/qml/hildonComponentsTest/UrlBar.qml debian/hildoncomponentstest/opt/hildonComponentsTest/qml/hildonComponentsTest/UrlBar.qml
 755 root root . opt/hildonComponentsTest/bin /

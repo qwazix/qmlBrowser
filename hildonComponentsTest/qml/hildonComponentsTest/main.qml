@@ -6,23 +6,24 @@ import org.hildon.components 1.0
 Rectangle{
     id: webBrowser
 
-     property string urlString : "http://communities-dominate.blogs.com" //"http://localhost/"
+     property string urlString : "http://talk.maemo.org"
 
      width: 800; height: 480
      color: "#343434"
-
-     Rectangle {
-         height: 4; color: "#63b1ed"
-         anchors.top: parent.top
-         z: 4
-         width: (parent.width - 20) * webView.progress
-         opacity: webView.progress == 1.0 ? 0.0 : 1.0
-     }
 
      FlickableWebView {
          id: webView
          url: webBrowser.urlString
          anchors { top: parent.top; left: parent.left; right: parent.right; bottom: parent.bottom }
+     }
+
+     ToolButton{
+         id: cursorMode
+         iconSource: "cursorMode.svg"
+         visible: webView.cursorMode
+         x: 0
+         y: parent.height*0.7
+         onClicked: webView.cursorMode = false
      }
 
 }

@@ -12,8 +12,9 @@ import QtWebKit 1.0
      property alias reload: webView.reload
      property alias forward: webView.forward
 
+     property bool cursorMode: false
      property bool swipeFromTopEdge : false
-     property int startMousePos: 0
+     property int startContentY: 0
 
      id: flickable
      width: parent.width
@@ -23,18 +24,27 @@ import QtWebKit 1.0
      anchors.left: parent.left
      anchors.right: parent.right
      pressDelay: 200
-
+     interactive: !cursorMode
 
      onMovementStarted: {
 //         console.log(mouseArea.mouseY - flickable.contentY)
          if (mouseArea.mouseY - flickable.contentY < 20) flickable.swipeFromTopEdge = true;
          else flickable.swipeFromTopEdge = false;
-         flickable.startMousePos = flickable.contentY*1 //mouseArea.mouseY
+         flickable.startContentY = flickable.contentY*1 //mouseArea.mouseY
 
+         if (mouseArea.mouseX - flickable.contentX < 20) {
+             cursorMode = true
+         }
 //         if (mouseArea.mouseX < 100) enabled= false; else enabled = true;
          console.log('flickStarted')
 //         console.log(mouseArea.mouseX,mouseArea.mouseY)
      }
+
+     onMovementEnded: {
+
+     }
+
+
 
 
      MouseArea{
@@ -47,8 +57,13 @@ import QtWebKit 1.0
              mouse.accepted = false
 //             if (mouseArea.mouseY - flickable.contentY < 20) flickable.swipeFromTopEdge = true;
 //             else flickable.swipeFromTopEdge = false;
-//             flickable.startMousePos = mouseArea.mouseY
+//             flickable.startContentY = mouseArea.mouseY
          }
+         onReleased: {
+             console.log("released")
+
+         }
+
          hoverEnabled: true
      }
 
@@ -60,15 +75,22 @@ import QtWebKit 1.0
 
      onContentXChanged: header.x = contentX
      onContentYChanged:{
-         console.log(flickable.startMousePos)
-         if (flickable.swipeFromTopEdge)
-             if (flickable.startMousePos - header.height <= contentY)
-                header.y = flickable.startMousePos - header.height
-             else header.y = contentY
-         else if (header.y >= contentY - header.height)
-             header.y = header.y - (flickable.startMousePos - flickable.contentY)
-             header.y = 0;
-//         console.log(contentY)
+         progressBar.anchors.top = header.bottom
+         if(flickable.contentY >= header.height){
+            if (flickable.swipeFromTopEdge){
+                 if (flickable.startContentY <= contentY  + header.height){
+                     header.y = flickable.startContentY - header.height
+                 } else header.y = contentY
+             } else if (header.y >= contentY - header.height){
+                if (header.y >= contentY) header.y = contentY
+             } else {
+                header.y = 0;
+                progressBar.anchors.top = undefined
+                progressBar.y = contentY
+            }
+        } else {
+             if (header.y != 0) header.y = flickable.contentY
+        }
      }
 
      onProgressChanged: header.urlChangedFlag = false
@@ -87,6 +109,15 @@ import QtWebKit 1.0
                               webBrowser.focus = true
                               header.urlChangedFlag = false
                           }
+     }
+
+     Rectangle {
+         id: progressBar
+         height: 4; color: "#63b1ed"
+         y: header.height
+         z: 4
+         width: (parent.width - 20) * webView.progress
+         opacity: webView.progress == 1.0 ? 0.0 : 1.0
      }
 
      WebView {

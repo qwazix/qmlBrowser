@@ -15,8 +15,8 @@ Changes:
  .
    * Initial Release.
 Checksums-Sha1: 
- fe1d8977705902e269abc53218b19f95f4529931 19102 hildoncomponentstest_0.0.1_armel.deb
+ 7b2b2d73014e0d80d5ac4470791f9fa55c8ba9e5 23526 hildoncomponentstest_0.0.1_armel.deb
 Checksums-Sha256: 
- b7cbf33175a39eb40115bc150edd122198ccab8b849dfe87f1f1d6e0811efb71 19102 hildoncomponentstest_0.0.1_armel.deb
+ 712a111a138dabb0cc4be97dfe8a95be16a527bc68ecbf0ac8bf3a577e8d6b7b 23526 hildoncomponentstest_0.0.1_armel.deb
 Files: 
- 471e8b8a741a1d60ff531a9e2bec7959 19102 user/hidden optional hildoncomponentstest_0.0.1_armel.deb
+ 2bb650d47fdfc3d92bbde4fa4da75588 23526 user/hidden optional hildoncomponentstest_0.0.1_armel.deb

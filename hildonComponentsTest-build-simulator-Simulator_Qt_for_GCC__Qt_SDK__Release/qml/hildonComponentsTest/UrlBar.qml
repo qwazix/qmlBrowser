@@ -12,30 +12,54 @@ Item {
 
     width: parent.width; height: childrenRect.height
 
-    TextField {
-        id: urlText
-//        horizontalAlignment: TextEdit.AlignLeft
-//        font.pixelSize: 14;
+    CustomTitleBar{
+        id: titleBar
+    }
 
-        onTextChanged: container.urlChanged()
-
-        Keys.onEscapePressed: {
-            urlText.text = webView.url
-            webView.focus = true
+    Rectangle{
+        height: childrenRect.height
+        color: theme.defaultBackgroundColor
+        Row{
+            height: childrenRect.height
+            width: back.width
+            id: buttons
+            anchors.left: parent.left
+            anchors.right: urlText.left
+            ToolButton{
+                id: back
+                iconSource: "back.svg"
+                onClicked: webView.back.trigger()
+            }
         }
 
-        Keys.onEnterPressed: {
-            container.urlEntered(urlText.text)
-            webView.focus = true
-        }
+        TextField {
+            id: urlText
+    //        horizontalAlignment: TextEdit.AlignLeft
+    //        font.pixelSize: 14;
 
-        Keys.onReturnPressed: {
-            container.urlEntered(urlText.text)
-            webView.focus = true
+            onTextChanged: container.urlChanged()
+
+            Keys.onEscapePressed: {
+                urlText.text = webView.url
+                webView.focus = true
+  ke          }
+
+            Keys.onEnterPressed: {
+                container.urlEntered(urlText.text)
+                webView.focus = true
+            }
+
+            Keys.onReturnPressed: {
+                container.urlEntered(urlText.text)
+                webView.focus = true
+            }
+            anchors.right: parent.right
+            anchors.left: buttons.right
         }
 
         anchors {
             left: parent.left; right: parent.right;
+            top: titleBar.bottom
 //            verticalCenter: parent.verticalCenter
         }
     }
