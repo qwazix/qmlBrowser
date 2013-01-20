@@ -1,0 +1,22 @@
+Format: 1.8
+Date: Thu, 17 Jan 2013 22:21:45 +0200
+Source: hildoncomponentstest
+Binary: hildoncomponentstest
+Architecture: armel
+Version: 0.0.1
+Distribution: unstable
+Urgency: low
+Maintainer: Michael Demetriou <qwazix@unknown>
+Changed-By: Michael Demetriou <qwazix@unknown>
+Description: 
+ hildoncomponentstest - <insert up to 60 chars description>
+Changes: 
+ hildoncomponentstest (0.0.1) unstable; urgency=low
+ .
+   * Initial Release.
+Checksums-Sha1: 
+ fe1d8977705902e269abc53218b19f95f4529931 19102 hildoncomponentstest_0.0.1_armel.deb
+Checksums-Sha256: 
+ b7cbf33175a39eb40115bc150edd122198ccab8b849dfe87f1f1d6e0811efb71 19102 hildoncomponentstest_0.0.1_armel.deb
+Files: 
+ 471e8b8a741a1d60ff531a9e2bec7959 19102 user/hidden optional hildoncomponentstest_0.0.1_armel.deb
